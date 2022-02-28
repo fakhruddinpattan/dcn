@@ -1,0 +1,17 @@
+version: "3.5"
+services:
+  fibonac:
+    build: FS/
+    ports:
+      - 9090:9090
+  authorotative:
+    build: AS/
+    ports:
+      - 53533:53533
+  user:
+    build: US/
+    depends_on:
+      - authorotative
+      - fibonac
+    ports:
+      - 8080:8080
